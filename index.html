@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>COM 330 - Assignment #3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
+    <style type="text/css">
+        .container { padding-top: 75px; float: left; width: 100%; }
+        .outer { width: 150px; float: left; }
+        .main { float: left; }
+        .center { text-align: center; }
+
+        .multi-left { width: 10em; text-align: right; display: inline-block; margin: 0 1em 0 0; float: left; padding-top: 7px; }
+        .multi-right { width: 217px; float: left; margin: 0 0.25em; }
+
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        div.clear { clear: both; height: 3px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="outer">&nbsp;</div>
+    <div class="main">
+        <form class="pure-form pure-form-aligned" action="cgi_project3_1.pl" method="POST">
+            <fieldset>
+                <legend>Assignment #3</legend>
+
+                <div class="pure-control-group">
+                    <label for="firstname">First Name</label>
+                    <input id="firstname" name="firstname" type="text" placeholder="First Name">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="lastname">Last Name</label>
+                    <input id="lastname" name="lastname" type="text" placeholder="Last Name">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="address">Address</label>
+                    <input id="address" name="address" type="text" placeholder="Address">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="city">City</label>
+                    <input id="city" name="city" type="text" placeholder="City">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state"></select>
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="zipcode">Zip Code</label>
+                    <input id="zipcode" name="zipcode" type="text" placeholder="Zipcode">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="Email">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" placeholder="Password">
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="multi-left">
+                    Gender
+                </div>
+                <div class="multi-right">
+                    <label for="option-one" class="pure-radio">
+                        <input id="option-one" type="radio" name="gender" value="Male">
+                        Male
+                    </label>
+                    <label for="option-two" class="pure-radio">
+                        <input id="option-two" type="radio" name="gender" value="Female">
+                        Female
+                    </label>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="multi-left">
+                    Favorite Colors
+                </div>                
+                <div class="multi-right">
+                    <label for="option-one" class="pure-checkbox">
+                        <input id="option-one" type="checkbox" name="colors" value="Red">
+                        Red
+                    </label>
+                    <label for="option-two" class="pure-checkbox">
+                        <input id="option-two" type="checkbox" name="colors" value="Orange">
+                        Orange
+                    </label>
+                    <label for="option-three" class="pure-checkbox">
+                        <input id="option-three" type="checkbox" name="colors" value="Yellow">
+                        Yellow
+                    </label>
+                    <label for="option-four" class="pure-checkbox">
+                        <input id="option-four" type="checkbox" name="colors" value="Green">
+                        Green
+                    </label>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="multi-left">Favorite Sports</div>
+                <div class="multi-right">
+                    <label for="option-one" class="pure-checkbox">
+                        <input id="option-one" type="checkbox" name="favoritesport" value="Football">
+                        Football
+                    </label>
+                    <label for="option-two" class="pure-checkbox">
+                        <input id="option-two" type="checkbox" name="favoritesport" value="Baseball">
+                        Baseball
+                    </label>
+                    <label for="option-three" class="pure-checkbox">
+                        <input id="option-three" type="checkbox" name="favoritesport" value="Basketball">
+                        Basketball
+                    </label>
+                    <label for="option-four" class="pure-checkbox">
+                        <input id="option-four" type="checkbox" name="favoritesport" value="Bowling">
+                        Bowling
+                    </label>
+                    <label for="option-five" class="pure-checkbox">
+                        <input id="option-five" type="checkbox" name="favoritesport" value="Golf">
+                        Golf
+                    </label>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="multi-left">Cities To Visit</div>
+                <div class="multi-right">
+                    <select id="citiesToVisit"></select>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="multi-left">Upload File (Max: 64KiB)</div>
+                <div class="multi-right">
+                    <div class="fileUpload pure-button pure-button-primary">
+                        <span>Upload</span>
+                        <input type="file" name="file" class="upload" />
+                    </div>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+                <div class="pure-control-group center">
+                    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                    &nbsp;
+                    <button type="reset" class="pure-button button-secondary">Clear</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="outer"></div>
+</div>
+
+<script language="javascript">
+    $(function() {
+        var allStates = { "states" : [
+            { "abbreviation" : "AK", "stateName" : "Alaska" },
+            { "abbreviation" : "AL", "stateName" : "Alabama" },
+            { "abbreviation" : "AR", "stateName" : "Arkansas" },
+            { "abbreviation" : "AZ", "stateName" : "Arizona" },
+            { "abbreviation" : "CA", "stateName" : "California" }
+        ]};
+
+        var listItem = $('#state');
+        $(allStates.states).each(function(index, value) {
+            $(listItem).append('<option value="' + value.abbreviation + '">' + value.stateName + '</option>');
+        });
+
+        var numbers = ["London", "Tokyo", "New York", "Honolulu", "Sydney", "Paris",
+                       "Rome", "Barcelona", "Copenhagen"];
+        var option = '';
+        for (var i = 0; i < numbers.length; i++){
+            option += '<option value="'+ numbers[i] + '">' + numbers[i] + '</option>';
+        }
+        $('#citiesToVisit').append(option);
+        $('#citiesToVisit').attr({
+            'multiple': 'multiple',
+            'width': '200px',
+            'height': '100px'
+        });
+    });
+</script>
+</body>
+</html>
